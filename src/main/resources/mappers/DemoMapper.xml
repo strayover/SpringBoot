@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.demo.mapper.DemoMapper">
+    <select id="getListData" resultType="com.example.demo.demo.entity.DemoEntity">
+        SELECT * FROM user;
+    </select>
+    <select id="getIdListData" resultType="com.example.demo.demo.entity.DemoEntity">
+        SELECT * FROM user where id = #{id};
+    </select>
+    <select id="addListData">
+        insert into user ( `name`,age,`like`) values (#{name},#{age},#{like});
+    </select>
+    <select id="updateListData">
+        update user set `name` = #{name},`age` = #{age},`like` = #{like} where id = #{id};
+    </select>
+    <select id="deleteListData">
+        DELETE from user where id = #{id};
+    </select>
+</mapper>
