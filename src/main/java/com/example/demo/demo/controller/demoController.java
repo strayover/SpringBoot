@@ -27,9 +27,9 @@ public class demoController {
 
     @PostMapping("/idList")
     public JSONResult idList(@RequestBody @Valid DemoDto demoDto){
-//        if(StringUtils.isEmpty(demoDto.getName())){
-//            return JSONResult.errorMsg("id为空");
-//        }
+        if(demoDto.getId() == null){
+            return JSONResult.errorMsg("id为空");
+        }
         List list = demoService.getIdList(demoDto.getId());
         return JSONResult.ok(list);
     }
@@ -55,6 +55,9 @@ public class demoController {
 
     @PostMapping("/updateList")
     public JSONResult updateList(@RequestBody @Valid DemoDto demoDto){
+        if(demoDto.getId() == null){
+            return JSONResult.errorMsg("id为空");
+        }
         if(StringUtils.isEmpty(demoDto.getName())){
             return JSONResult.errorMsg("姓名为空");
         }
@@ -74,6 +77,9 @@ public class demoController {
 
     @PostMapping("/deleteList")
     public JSONResult deleteList(@RequestBody @Valid DemoDto demoDto){
+        if(demoDto.getId() == null){
+            return JSONResult.errorMsg("id为空");
+        }
         try{
             demoService.deleteList(demoDto.getId());
             return JSONResult.ok("删除成功");
